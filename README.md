@@ -1,2 +1,2 @@
 # usp-bcc
-Material
+Material que produzi durante minha graduação na USP
