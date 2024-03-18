@@ -36,6 +36,20 @@ vertex** create_matrix(int n){
     return m;
 }
 
+void delete_matrix(vertex ***m, int n){
+    if (**m != NULL){
+        printf("comecei a deletar a matriz\n");
+        for (int i=0; i<n; i++){
+            printf("loop %d\n", i);
+            if (&(*m[i]) != NULL){
+                free(&(*m[i]));
+            }
+        }
+        printf("deletei os elementos\n");
+        free(*m);
+    }
+}
+
 GRAPH *create_graph(int v){
     GRAPH *g = (GRAPH *) malloc(sizeof(GRAPH));
 
@@ -49,6 +63,25 @@ GRAPH *create_graph(int v){
     g->matrix = create_matrix(v);
 
     return g;
+}
+
+void delete_graph(GRAPH **g){
+    printf("começando a deletar\n");
+    if(*g != NULL){
+        delete_matrix(&((*g)->matrix), (*g)->V);
+        printf("deletei a matriz\n");
+        free(*g);
+        printf("deletei o grafo\n");
+    }
+}
+
+void print_graph(GRAPH *g, int n){
+    for(int i=0; i<n; i++){
+        for(int j=0; j<n; j++){
+            printf("%d", g->matrix[i][j]);
+        }
+        printf("\n");
+    }
 }
 
 bool exist_edge(int r, int c){
