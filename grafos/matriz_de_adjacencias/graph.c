@@ -50,3 +50,8 @@ GRAPH *create_graph(int v){
 
     return g;
 }
+
+bool exist_edge(int r, int c){
+
+    return 0;
+}
