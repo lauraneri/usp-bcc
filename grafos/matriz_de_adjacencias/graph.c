@@ -62,14 +62,14 @@ GRAPH *create_graph(int v){
     return g;
 }
 
-void delete_graph(GRAPH **g){
+void remove_graph(GRAPH **g){
     if(*g != NULL){
         delete_matrix(&((*g)->matrix), (*g)->V);
         free(*g);
     }
 }
 
-void print_graph(GRAPH *g, int n){
+void print_info(GRAPH *g, int n){
     for(int i=0; i<n; i++){
         for(int j=0; j<n; j++){
             printf("%d", g->matrix[i][j]);
@@ -78,7 +78,66 @@ void print_graph(GRAPH *g, int n){
     }
 }
 
-bool exist_edge(int r, int c){
+bool exist_edge(GRAPH *g, int r, int c){
+    bool exist;
+    if(g->matrix[r][c] > 0){
+        exist = true;
+    }else{
+        exist = false;
+    }
 
-    return 0;
+    return exist;
+}
+
+int get_qtd_adj_vertex(GRAPH *g, int v){
+    int qtd = 0;
+
+    for(int i=0; i<g->V; i++){
+        if(g->matrix[v][i] > 0){
+            qtd++;
+        }
+    }
+
+    return qtd;
+}
+
+int* get_adj_vertex(GRAPH *g, int v){
+    int qtd = 0;
+    int *adjs = (int *) malloc(qtd*sizeof(int));
+    
+
+    for(int i=0; i<g->V; i++){
+        if(g->matrix[v][i] > 0){
+            qtd++;
+            adjs = (int *) realloc (adjs, qtd * sizeof(int));
+            adjs[qtd-1] = g->matrix[v][i];
+        }
+    }
+
+    return adjs;
+}
+
+void print_list(int *list, int qtd){
+    for (int i=0; i<qtd; i++){
+        printf("%d ", list[i]);
+    }
+    printf("\n");
+
+}
+
+void remove_edge(GRAPH *g, int r, int c){
+    g->matrix[r][c] = 0;
+    g->matrix[c][r] = 0;
+    g->A--;
+}
+
+int number_of_vertex(GRAPH *g){
+    int n = g->V;
+    return n;
+}
+
+void add_edge(GRAPH *g, int r, int c){
+    g->matrix[r][c] = 1;
+    g->matrix[c][r] = 1;
+    g->A = g->A++;
 }
