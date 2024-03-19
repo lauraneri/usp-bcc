@@ -139,5 +139,5 @@ int number_of_vertex(GRAPH *g){
 void add_edge(GRAPH *g, int r, int c){
     g->matrix[r][c] = 1;
     g->matrix[c][r] = 1;
-    g->A = g->A++;
+    g->A++;
 }
