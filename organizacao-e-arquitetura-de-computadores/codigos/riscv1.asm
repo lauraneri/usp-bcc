@@ -1,7 +1,7 @@
 	.data
 	.align 0
-str1: 	.asciiz "Hello World++!"
-str2:	.asciiz "Hello World--!"
+str1: 	.asciz "Hello World++!"
+str2:	.asciz "Hello World--!"
 	
 	.text
 	.align 2
