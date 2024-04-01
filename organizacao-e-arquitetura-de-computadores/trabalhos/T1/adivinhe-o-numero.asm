@@ -1,7 +1,7 @@
 	.data
 	.align 0	#alinhando para string
 initMsg:.asciz "Bem-vindo! Este é o jogo 'Adivinhe o número'!\nO computador escolheu um número entre 1 e 100, você consegue adivinhar qual é? Faça seu chute!"
-			#mensagens de boas-vindas e instruções
+			    #mensagens de boas-vindas e instruções
 chuteMsg: .asciz "Chute: "
 finalMsg: .asciz "\nFim! Obrigada por jogar! :D\n"
 	
@@ -28,7 +28,7 @@ main:
 	
 	addi a7, zero, 1
 	add a0, zero, s0
-	ecall		#--
+	ecall			#--
 	
 	addi a7, zero, 4 #printando msg final
 	la a0, finalMsg
