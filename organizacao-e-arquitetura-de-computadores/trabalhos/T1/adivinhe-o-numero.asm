@@ -20,7 +20,7 @@ main:
 	addi a7, zero, 5 #solicitando entrada de inteiro (chute de numero)
 	ecall		
 	
-	add s0, a0, zero #armazenando o chute
+	add s0, a0, zero #armazenando o chute em s0
 	
 	addi a7, zero, 4 #printando o chute
 	la a0, chuteMsg
