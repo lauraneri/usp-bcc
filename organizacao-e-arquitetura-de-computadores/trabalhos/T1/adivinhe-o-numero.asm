@@ -1,7 +1,7 @@
 	.data
 	.align 0	#alinhando para string
 initMsg:.asciz "Bem-vindo! Este é o jogo 'Adivinhe o número'!\nO computador escolheu um número entre 1 e 100, você consegue adivinhar qual é? Faça seu chute!"
-			    #mensagens de boas-vindas e instruções
+			#mensagens de boas-vindas e instruções
 chuteMsg: .asciz "Chute: "
 finalMsg: .asciz "\nFim! Obrigada por jogar! :D\n"
 	
@@ -17,18 +17,22 @@ main:
 	la a0, initMsg
 	ecall			
 	
+	addi s2, zero, 2222
+	jal randNum
+	add s0, zero, a1
+	
 	addi a7, zero, 5 #solicitando entrada de inteiro (chute de numero)
 	ecall		
 	
-	add s0, a0, zero #armazenando o chute em s0
+	add s1, a0, zero #armazenando o chute em s1
 	
-	addi a7, zero, 4 #printando o chute
+	addi a7, zero, 4 #printando o chute--
 	la a0, chuteMsg
 	ecall
 	
 	addi a7, zero, 1
-	add a0, zero, s0
-	ecall			#--
+	add a0, zero, s1
+	ecall		#--
 	
 	addi a7, zero, 4 #printando msg final
 	la a0, finalMsg
@@ -37,3 +41,9 @@ main:
 	
 	addi a7, zero, 10 #finalizando programa
 	ecall
+
+randNum:		#mod -> a2 = 100; a -> a3 = 21; c -> a4 = 17; seed -> a5 = ecall; lcg.anterior -> s2
+	
+	
+	
+	jr ra

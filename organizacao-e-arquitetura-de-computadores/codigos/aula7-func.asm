@@ -38,7 +38,6 @@ main:
 	li a7, 10
 	ecall
 	
-	
 fat:	
 	addi a1, zero, 1 #fat = 1
 	addi t0, zero, 1 #condição de parada

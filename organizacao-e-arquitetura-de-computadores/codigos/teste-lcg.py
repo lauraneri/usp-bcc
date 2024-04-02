@@ -1,5 +1,5 @@
 """ Teste para compreensão de gerador congruencial linear (LCG em inglês)"""
-
+#mod = a2 100, a = a3 21, c = a4 17, seed = a5 ecall
 def lcg(modulo, a, c, semente=None):
     if semente != None:
         lcg.anterior = semente
