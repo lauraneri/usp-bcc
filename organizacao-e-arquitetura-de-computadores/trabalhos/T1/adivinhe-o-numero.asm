@@ -81,5 +81,6 @@ randNum:		#função que gera o numero pseudoaleatorio
 # a3 = a -> NRO PRIMO QUALQUER
 # a4 = c -> NRO PRIMO QUALQUER
 # a5 = seed -> NRO INTEIRO QUALQUER
+# t0 = aux_comp -> AUXILIAR DA COMPARAÇÃO
 # t1 = conta_aux -> AUXILIAR PARA REALIZAÇÃO DAS CONTAS
 # a1 = resultado -> RESULTADO DE NRO ALEATORIO FINAL
