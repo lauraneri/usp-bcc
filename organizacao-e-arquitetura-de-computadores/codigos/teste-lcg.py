@@ -21,3 +21,7 @@ for i in range (102):
 if existe == False:
     print("NAO ACHOU")
     
+#versao final da funçao
+def lcg2(modulo, a, c, semente):
+    num_aleatorio = (lcg.anterior * a + c) % modulo
+    return num_aleatorio
