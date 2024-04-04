@@ -35,7 +35,7 @@ main:
 	add a0, zero, s1
 	ecall
 	
-	li a7, 10
+	li a7, 10 #finalizando
 	ecall
 	
 fat:	
