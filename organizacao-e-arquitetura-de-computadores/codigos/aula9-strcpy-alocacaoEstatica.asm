@@ -1,7 +1,8 @@
 	.data
 	.align 0
 str_src: .asciz "Hello!"
-str_dst: .space 7
+str_dst: .space 7 #alocando 7 bytes na area estatica de dados com o label str_dist
+
 	
 	.text
 	.align 2
