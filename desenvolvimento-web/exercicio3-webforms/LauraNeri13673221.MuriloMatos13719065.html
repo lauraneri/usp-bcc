@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html> 
+    <head>
+        <meta charset="utf-8">
+        <title>Laura Neri's Feedback</title>
+    </head>
+    <body>
+        <!-- Cabeçalho da página -->
+        <header>
+            <h1>Feedback for Laura Neri's Profile Page</h1>
+        </header>
+
+        <!-- Corpo da página - FORMS -->
+        <div class="container">
+
+            <form>
+
+                <h2>Personal Details</h2>
+                <label for="name">Name:</label><br>
+                <input type="text" id="name" name="name" placeholder="Write your name" required><br><br>
+                <label for="email">Email:</label><br>
+                <input type="email" id="email" name="email" placeholder="Write your email" required><br>
+                
+                <h4>How did you find my profile?</h4>
+                <label for="options">Choose an option:</label>
+                <select id="options" name="options" required>
+                    <option value="google">Google</option>
+                    <option value="social-media">Social Media</option>
+                    <option value="friend">Friend</option>
+                    <option value="linkedin">LinkedIn</option>
+                </select>
+                <br><br>
+
+                <h2>Feedback Section</h2>
+                <textarea id="feeback" name="feeback" rows="5" cols="33">Write comments or feedback here</textarea><br>
+
+                <h4>Did you like my profile?</h4>
+                <input type="radio" id="profile-yes" name="profile-yes" value="profile-yes">
+                <label for="profile-yes">Yes!</label><br>
+                <input type="radio" id="profile-no" name="profile-no" value="profile-no">
+                <label for="profile-no">No</label><br>
+                <input type="radio" id="profile-maybe" name="profile-maybe" value="profile-maybe">
+                <label for="profile-maybe">Maybe</label>
+
+                <h4>What did you like about the profile?</h4>
+                <input type="checkbox" id="design" name="design" value="design">
+                <label for="design">Design</label><br>
+                <input type="checkbox" id="content" name="content" value="content">
+                <label for="content">Content</label><br>
+                <input type="checkbox" id="ease-of-use" name="ease-of-use" value="ease-of-use">
+                <label for="ease-of-use">Ease of Use</label><br>
+                <input type="checkbox" id="other" name="other" value="other">
+                <label for="other">Other</label><br><br>
+
+                <input type="submit" value="Submit">
+                <input type="reset" value="Reset">
+
+            </form>
+        </div>
+
+        <!-- Espaço de multimídia da página -->
+        <div class="container">
+            <h2>Multimedia</h2>
+
+            <h3>This is a very good video, I recommend you to watch it</h3>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/KegEWyf1WXc?si=H8-BgVivGhGteICj" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            
+            <h3>Also, this is a really good song</h3>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5zO1MNX6m0lUDAT5IhBYjv?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+
+        <!-- Notas de rodapé da página -->
+        <footer>
+            <h3>Thank you very much for your feedback! I really appreciate it sz</h3>
+        </footer>
+    </body>
+</html>
