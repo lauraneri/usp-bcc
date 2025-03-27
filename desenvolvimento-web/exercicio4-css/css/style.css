@@ -1,0 +1,117 @@
+/*seletor universal*/
+*{
+    max-width: 100%;
+    line-height: normal;
+}
+
+header{
+    margin: 0;
+    padding: 0;
+}
+
+h2{
+    font-size: 40px;
+    margin: 20px;
+}
+
+/*seletor tag*/
+p{
+    color: black; 
+    font-size:12 px;
+}
+
+form{
+    margin:10px;
+}
+
+/*estiliza o formulário. Exemplos de seletores de atributo*/
+input[type="text"], input[type="email"]{
+    margin: 5px;
+    width:200px; 
+    background-color:#ccc;
+    height:35px; 
+    border:none;
+}
+input[type="submit"]{
+    margin: 5px;
+    width:50px;
+    background-color: green;
+    height:35px; 
+    border:none;
+    cursor:poniter;
+    color:#fff;
+}
+
+
+/*Agruṕamento de seletores*/
+h1, h2, p, form{text-align: center;}
+
+@font-face{
+    font-family: alexbrush;
+    src: url(alexbrush-regular-webfont.woff);
+}
+
+body{
+    background-image: url("../imagens/cao2.png");
+    background-repeat: no-repeat;
+    background-position:center right;
+    background-size: 300px 300px;;
+    background-color: rgb(209, 242, 247);
+    text-align: center;
+}
+
+/*seletor ID e classes*/
+
+.texto-principal{color:black;text-align:center;}
+.fundo-principal{background-color:rgb(253, 219, 146);padding:20px;}
+.content{
+
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 20px auto;
+}
+
+.alex-brush-regular {
+    font-family: "Alex Brush", cursive;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 50px;
+    color:rgba(82, 54, 16, 0.93);
+}
+
+.faculty-glyphic-regular {
+    font-family: "Faculty Glyphic", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+  
+
+#quadro-verde{
+    background-color:rgb(162, 252, 207); 
+    padding:20px;
+    width: 260px; 
+    margin: 20px auto;
+    position:static; 
+    border:5px solid rgb(24, 109, 28);
+    border-style: dashed;
+    align-items: center;
+    padding: auto;
+    text-align: center;
+}
+
+a:hover{
+    color:rgb(226, 223, 25);
+    font-size: 40px;
+}
+
+img{
+    margin: auto;
+    border: 3px solid black; /* Borda sólida de 3px na cor preta */
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); /* Sombra */
+    margin-bottom: 40px;
+}
+
+li{
+    list-style-type: upper-roman;
+
+}
