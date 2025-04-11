@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation Activity</title>
+    <style>
+        .completed {
+            color: gray;
+            text-decoration: line-through;
+        }
+
+        .todo-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .delete-button{
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>To-Do List</h1>
+    
+    <div class="container">
+        <div>
+            <input type="text" id="taskInput" placeholder="Enter a new task...">
+            <button id="addButton">Add Task</button>
+        </div>
+        
+        <ul id="taskList">
+            <!-- tarefas serao adicionadas aqui -->
+        </ul>
+    </div>
+    
+    <script>
+        const button = document.getElementById("addButton"); //pega o botão (button)
+        const taskList = document.getElementById("taskList"); //pega a lista de tarefas (ul)
+
+        //ITEM 1
+        //adiciona um evento de click ao botão
+        button.addEventListener('click', function() {
+            //pega o valor do input
+            const input = document.getElementById("taskInput").value;
+
+            //cria um novo elemento li e uma nova div
+            const nova_div = document.createElement("div");
+            nova_div.classList.add("todo-item");
+            const novo_item = document.createElement("li");
+
+            //adiciona o valor do input ao novo elemento
+            novo_item.textContent = input;
+
+            //criação do botão delete
+            const botao_delecao = document.createElement("button");
+            botao_delecao.textContent = "Delete";
+            botao_delecao.classList.add("delete-button");
+            //quando o botão é clicado, remove o elemento da lista
+            botao_delecao.addEventListener('click', function() {
+                nova_div.remove();
+            });
+            //adiciona o novo elemento à lista de tarefas
+            nova_div.appendChild(novo_item);
+            nova_div.appendChild(botao_delecao);
+            taskList.appendChild(nova_div);
+            lista = taskList.children;
+        });
+
+        //ITEM 2
+        //adiciona um evento de click a cada item da lista
+        taskList.addEventListener('click', function(event) {
+            //se o elemento clicado é um li
+            if (event.target.tagName === "LI") {
+                event.target.classList.toggle("completed");
+            }
+        });
+
+        //ITEM 3 - integrado no item 1
+    </script>
+</body>
+</html>

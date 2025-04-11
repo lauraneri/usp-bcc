@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation Activity</title>
+</head>
+<body>
+    <h1>DOM Manipulation Activity</h1>
+    <p>Paragraph 1</p>
+    <p>Paragraph 2</p>
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+    <img src="https://via.placeholder.com/100" alt="Placeholder Image">
+    <button id="taskButton">Perform Task</button>
+    
+    <script>
+
+        //item 1.
+        function item1() {
+            const primeiro_paragrafo = document.querySelector("p");
+
+            primeiro_paragrafo.textContent = "New Paragraph 1";
+        }
+
+        //item 2.
+
+        function item2() {
+            const ul = document.querySelector("ul");
+
+            const novo_item = document.createElement("li");
+
+            novo_item.textContent = "item 4";
+
+            ul.appendChild(novo_item);
+        }
+
+        //item 3.
+
+        function item3() {
+            const imagem = document.querySelector("img");
+            imagem.src = "https://cdnb.artstation.com/p/assets/images/images/006/557/141/large/xuan-ying-3.jpg?1499504153";
+        }
+
+        //item 4.
+
+        function item4() {
+            const paragrafos = document.querySelectorAll("p");
+
+            const segundo_paragrafo = paragrafos[1];
+
+            segundo_paragrafo.style.backgroundColor = "yellow";
+        }
+
+        //item 5.
+
+        function item5() {
+            const primeiro_paragrafo = document.querySelector("p");
+
+            primeiro_paragrafo.addEventListener('click', function() {
+                this.textContent = "Clicked!";
+            });
+        }
+
+        //item 6
+
+        const button = document.getElementById("taskButton");
+        button.addEventListener('click', function() {
+            item1();
+            item2();
+            item3();
+            item4();
+            item5();
+            
+        });
+
+
+
+    </script>
+</body>
+</html>
