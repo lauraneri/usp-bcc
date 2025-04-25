@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>AJAX</title>
+        <meta charset="utf-8">
+
+        <!--Link para o css-->
+        <style>
+            header{
+                text-align: center;
+                padding: 10px;
+            }
+
+            .alex-brush-regular {
+            font-family: "Alex Brush", cursive;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 50px;
+            color:rgba(82, 54, 16, 0.93);
+
+            }
+
+            .faculty-glyphic-regular {
+            font-family: "Faculty Glyphic", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 40px;
+            }
+
+            .hidden
+            {
+                display: none;
+            }
+
+            body {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                min-height: 100vh;
+                margin: 0;
+            }
+
+            #jokeButton{
+                background-color: black;
+                color: white;
+                padding: 20px 40px;
+                border: none;
+                cursor: pointer;
+                border-radius: 8px;
+                margin-top: 10px;
+                font-size: 20px;
+            }
+
+            #container-piada{
+                margin-top: 50px;
+                background-color: rgb(223, 227, 231);
+                color: black;
+                border-radius: 8px;
+                padding: 40px;
+                width: 600px;
+                font-size: 20px;
+            }
+        </style>
+
+        <!-- Link para as fontes do Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Faculty+Glyphic&display=swap" rel="stylesheet">
+
+    </head>
+    <body>
+        <header class="faculty-glyphic-regular">
+            <h1>Joke Generator</h1>
+        </header>
+
+        <button id="jokeButton">Get a joke</button>
+
+        <div id="container-piada" class="hidden faculty-glyphic-regular">
+            <p id="piada"></p>
+        </div>
+
+
+        <script>
+            async function getData() {
+                const url = "https://v2.jokeapi.dev/joke/Any";
+                try {
+                    const response = await fetch(url);
+                    if (!response.ok) {
+                        console.log("Erro na promessa");
+                    }
+
+                    const json = await response.json();
+                    //console.log(json);
+                    return json;
+                } catch (error) {
+                    console.error("Erro na promessa");
+                    return null;
+                }
+            }
+
+            
+
+            const button = document.getElementById("jokeButton"); //pega o botão (button)
+
+            //adiciona um evento de click ao botão
+            button.addEventListener('click', async function() {
+                container = document.getElementById("container-piada");
+                container.classList.remove("hidden");
+
+                const json = await getData();
+                console.log(json);
+
+                const piada = document.getElementById("piada");
+                piada.innerHTML = json.joke || (json.setup + "<br><br>" + json.delivery);
+            });
+    
+        </script>
+    </body>
+</html>
