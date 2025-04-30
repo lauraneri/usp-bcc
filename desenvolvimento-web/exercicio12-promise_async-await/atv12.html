@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+
+    </head>
+    <body>
+        <script>
+            //FUNÇÃO QUE RECEBE O NOME DA CIDADE
+
+            // async function getData() {
+                
+            //     //trocar Berlim pelo nome input
+            //     const url_nome = "https://geocoding-api.open-meteo.com/v1/search?name=Berlin&count=1&language=en&format=json";
+            
+            //     try {
+            //         const response = await fetch(url_nome);
+            //         if (!response.ok) {
+            //             console.log("Erro na promessa");
+            //         }
+
+            //         const json = await response.json();
+            //         console.log(json.results[0].latitude);
+            //         console.log(json.results[0].longitude);
+
+            //     } catch (error) {
+            //         console.error("Erro na promessa");
+            //     }
+            // }
+
+            // getData();
+
+            //--------------------------------------------------------------------------------------------
+
+
+            //FUNÇÃO QUE RECEBE A LATITUDE E LONGITUDE
+
+            async function getData() {
+                
+                //trocar latitude e longitude pelas  entradas
+                const url_latiude_longitude = "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current=apparent_temperature,cloud_cover,showers&timezone=auto&past_days=31";
+            
+                try {
+                    const response = await fetch(url_latiude_longitude);
+                    if (!response.ok) {
+                        console.log("Erro na promessa");
+                    }
+
+                    const json = await response.json();
+                    console.log(json.timezone);
+                    console.log(json.latitude);
+                    console.log(json.longitude);
+                    console.log(json.current.apparent_temperature);
+                    console.log(json.current.cloud_cover);
+
+
+                } catch (error) {
+                    console.error("Erro na promessa");
+                }
+            }
+
+            getData();
+
+        </script>
+    </body>
+</html>

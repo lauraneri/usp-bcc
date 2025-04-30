@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Weather Application</title>
+        <meta charset="utf-8">
+
+        <!--Link para o css-->
+        <style>
+            header{
+                text-align: center;
+                padding: 10px;
+            }
+
+            .faculty-glyphic-regular {
+            font-family: "Faculty Glyphic", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 40px;
+            }
+
+            .hidden
+            {
+                display: none;
+            }
+
+            body {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                min-height: 100vh;
+                margin: 0;
+            }
+
+            /* estilizando o forms */
+            form {
+                background-color: rgb(245, 248, 250);
+                padding: 25px;
+                border-radius: 12px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                margin: 20px 0;
+                width: 400px;
+                text-align: center;
+                font-family: "Faculty Glyphic", sans-serif;
+            }
+
+            /* estilizando input */
+            input[type="text"] {
+                width: 90%;
+                padding: 12px;
+                margin: 10px 0;
+                border: 2px solid rgba(82, 54, 16, 0.5);
+                border-radius: 6px;
+                font-size: 16px;
+                transition: border-color 0.3s;
+            }
+
+            input[type="text"]:focus {
+                border-color: rgba(82, 54, 16, 0.93);
+                outline: none;
+                box-shadow: 0 0 5px rgba(82, 54, 16, 0.3);
+            }
+
+            /* estilizando botões */
+            input[type="submit"] {
+                background-color: rgba(82, 54, 16, 0.93);
+                color: white;
+                padding: 14px 28px;
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+                font-size: 18px;
+                font-family: "Faculty Glyphic", sans-serif;
+                transition: background-color 0.3s;
+                margin-top: 10px;
+            }
+
+            input[type="submit"]:hover {
+                background-color: rgba(82, 54, 16, 0.8);
+                transform: scale(1.05);
+            }
+
+            /* estilo no h1 */
+            h1 {
+                text-align: center;
+                color: rgba(82, 54, 16, 0.93);
+                margin: 15px 0;
+                font-family: "Faculty Glyphic", sans-serif;
+            }
+
+            /* estilizando o display de clima */
+            #weather-display {
+                background-color: rgb(223, 227, 231);
+                padding: 30px;
+                border-radius: 12px;
+                width: 500px;
+                text-align: center;
+                margin-top: 30px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            }
+
+            /* quando o display de clima é mostrado ele aparece com uma animação */
+            #weather-display:not(.hidden) {
+                animation: fadeIn 0.5s ease-in;
+            }
+
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+
+            
+        </style>
+
+        <!-- Link para as fontes do Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Faculty+Glyphic&display=swap" rel="stylesheet">
+
+    </head>
+    <body>
+        <header class="faculty-glyphic-regular">
+            <h1>Weather Application</h1>
+        </header>
+
+        <form>
+            City's name: <br>
+            <input type="text" name="name"><br>
+            <br>
+            <input type="submit" value="Fetch Coordinates" id="fetchCoordinates">
+        </form>
+
+        <h1>OR</h1>
+        <h1>Enter the city coordinates</h1>
+
+        <form>
+            Latitude: <br>
+            <input type="text" name="latitude"><br>
+            <br>
+            Longitude: <br>
+            <input type="text" name="longitude"><br>
+            <br>
+            <input type="submit" value="Fetch Weather" id="fetchWeather">
+        </form>
+
+        <div id="weather-display" class="hidden faculty-glyphic-regular">
+            <p id="latitude">Latitude: {latitude}</p>
+            <p id="longitude">Longitude: {longitude}</p>
+            <p id="temperature">Temperature: {temperature}°C</p>
+            <p id="condition">Weather Condition: {description}</p>
+            <img src=""></img>
+        </div>
+
+
+        <script>
+
+            //FUNÇÃO QUE RECEBE O NOME DA CIDADE
+
+            async function getCoordinates(name) {
+                
+                //trocar Berlim pelo nome input
+                const url_nome = `https://geocoding-api.open-meteo.com/v1/search?name=${name}&count=1&language=en&format=json`;
+            
+                try {
+                    const response = await fetch(url_nome);
+                    if (!response.ok) {
+                        console.log("Erro na promessa da busca pelo nome");
+                    }
+
+                    const json = await response.json();
+                    console.log(json.results[0].latitude);
+                    console.log(json.results[0].longitude);
+                    return json.results[0];
+
+                } catch (error) {
+                    console.error("Erro na promessa da busca pelo nome");
+                }
+            }
+
+            //FUNÇÃO QUE RECEBE A LATITUDE E LONGITUDE
+
+            async function getWeather(latitude, longitude) {
+                
+                //trocar latitude e longitude pelas  entradas
+                const url_latiude_longitude = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=apparent_temperature,cloud_cover,showers&timezone=auto&past_days=31`;
+            
+                try {
+                    const response = await fetch(url_latiude_longitude);
+                    if (!response.ok) {
+                        console.log("Erro na promessa");
+                    }
+
+                    const json = await response.json();
+                    console.log(json.timezone);
+                    console.log(json.latitude);
+                    console.log(json.longitude);
+                    console.log(json.current.apparent_temperature);
+                    console.log(json.current.cloud_cover);
+                    return json;
+
+                } catch (error) {
+                    console.error("Erro na promessa");
+                }
+            }
+
+            const buttonCoordinates = document.getElementById("fetchCoordinates"); //pega o botão de conseguir coordenadas
+            let latitude;
+            let longitude;
+
+            //adiciona um evento de click ao botão
+            buttonCoordinates.addEventListener('click', async function(e) {
+                e.preventDefault();
+                const cityName = document.querySelector('input[name="name"]').value.trim();
+                if (!cityName) {
+                    alert("Please enter a city name");
+                    return;
+                }
+
+                const city = (cityName);
+                latitude = city.latitude;
+                longitude = city.longitude;
+
+            });
+
+            
+
+            const buttonWeather = document.getElementById("fetchWeather"); //pega o botão de conseguir clima
+            const display = document.getElementById("weather-display"); //pega o display
+
+            //adiciona um evento de click ao botão
+            buttonWeather.addEventListener('click', async function(e) {
+                e.preventDefault();
+                if(!latitude && !longitude) {
+                    latitude = document.querySelector('input[name="latitude"]').value.trim();
+                    longitude = document.querySelector('input[name="longitude"]').value.trim();
+                }
+                const weather = await getWeather(latitude, longitude);
+                let timezone = weather.timezone;
+                let latitude = weather.latitude;
+                let longitude = weather.longitude;
+                let temperature = weather.current.apparent_temperature;
+                let cloud_cover = weather.current.cloud_cover;
+                let description = weather.current.weather_code;
+                let icon = weather.current.weather
+                
+                display.classList.remove("hidden");
+                try {
+                    const response = await fetch(url);
+                    if (!response.ok) {
+                        console.log("Erro na promessa");
+                    }
+                } catch (error) {
+                    console.error("Erro na promessa");
+                }
+            });
+    
+        </script>
+    </body>
+</html>
